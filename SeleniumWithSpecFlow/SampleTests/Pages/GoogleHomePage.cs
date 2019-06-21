@@ -1,10 +1,9 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
+//using OpenQA.Selenium.Support.UI;
+//using DotNetSe
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace Framework.SampleTests.Pages
@@ -30,13 +29,18 @@ namespace Framework.SampleTests.Pages
         public GoogleHomePage(IWebDriver driver)
         {
             Driver = driver;
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+            Driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(30);
         }
 
         public IWebElement SearchField
         {
             get
             {
-                return Driver.FindElement(By.Name(SEARCH_TEXT_BOX_NAME));
+                WebDriverWait waits = new WebDriverWait(Driver,TimeSpan.FromSeconds(30));
+                IWebElement textbox;
+                textbox= waits.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible((By.Name(SEARCH_TEXT_BOX_NAME))));
+                return textbox;
             }
         }
 
