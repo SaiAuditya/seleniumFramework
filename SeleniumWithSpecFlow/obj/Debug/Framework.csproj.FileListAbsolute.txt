@@ -34,3 +34,4 @@ C:\Users\venkata_srinadhuni\Source\Repos\seleniumFramework\SeleniumWithSpecFlow\
 C:\Users\venkata_srinadhuni\Source\Repos\seleniumFramework\SeleniumWithSpecFlow\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
 C:\Users\venkata_srinadhuni\Source\Repos\seleniumFramework\SeleniumWithSpecFlow\obj\Debug\SeleniumFramework.dll
 C:\Users\venkata_srinadhuni\Source\Repos\seleniumFramework\SeleniumWithSpecFlow\obj\Debug\SeleniumFramework.pdb
+C:\Users\venkata_srinadhuni\Source\Repos\seleniumFramework\SeleniumWithSpecFlow\obj\Debug\Framework.csprojResolveAssemblyReference.cache

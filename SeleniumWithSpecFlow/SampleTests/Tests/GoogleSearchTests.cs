@@ -6,11 +6,11 @@ using OpenQA.Selenium;
 namespace Framework.SampleTests.Tests
 {
     [TestFixture(BrowserType.Chrome)]
-    [TestFixture(BrowserType.Chrome)]
-    [TestFixture(BrowserType.Chrome)]
-    [TestFixture(BrowserType.Chrome)]
-    [TestFixture(BrowserType.FireFox)]
-    [TestFixture(BrowserType.FireFox)]
+   // [TestFixture(BrowserType.Chrome)]
+    //[TestFixture(BrowserType.Chrome)]
+    //[TestFixture(BrowserType.Chrome)]
+    //[TestFixture(BrowserType.FireFox)]
+    //[TestFixture(BrowserType.FireFox)]
     // [TestFixture(BrowserType.InternetExplorer)]
     [Parallelizable(ParallelScope.Self)]
     public class GoogleSearchTests
@@ -37,6 +37,10 @@ namespace Framework.SampleTests.Tests
             //google search results page
             GoogleSearchResultsPage results = new GoogleSearchResultsPage(DriverFactory.GetDriver<IWebDriver>());
             results.VerifyResultLink("google");
+            //Assert.In
+            
+
+            //Assert.Inconclusive
         }
         [TearDown]
         public void CleanBrowserSessions()

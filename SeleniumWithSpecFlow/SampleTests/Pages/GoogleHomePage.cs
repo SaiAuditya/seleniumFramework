@@ -4,7 +4,7 @@ using SeleniumExtras.WaitHelpers;
 //using OpenQA.Selenium.Support.UI;
 //using DotNetSe
 using System;
-
+using System.Threading;
 
 namespace Framework.SampleTests.Pages
 {
@@ -29,17 +29,44 @@ namespace Framework.SampleTests.Pages
         public GoogleHomePage(IWebDriver driver)
         {
             Driver = driver;
+
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
             Driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(30);
+
+            Thread.Sleep(2000);
         }
 
         public IWebElement SearchField
         {
             get
             {
-                WebDriverWait waits = new WebDriverWait(Driver,TimeSpan.FromSeconds(30));
                 IWebElement textbox;
-                textbox= waits.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible((By.Name(SEARCH_TEXT_BOX_NAME))));
+                WebDriverWait waits = new WebDriverWait(Driver, TimeSpan.FromSeconds(30));
+
+                waits.IgnoreExceptionTypes(typeof(NoSuchElementException));
+                waits.IgnoreExceptionTypes(typeof(ElementNotSelectableException));
+
+                /*
+                textbox = waits.Until(SeleniumExtras
+                    .WaitHelpers
+                    .ExpectedConditions
+                    .ElementIsVisible((By.Name(SEARCH_TEXT_BOX_NAME))));
+                    */
+
+                //there is another way using function delegate
+                //delegate parameters and return value = new delegate parameters return value of passed parameters
+                //delegate is onthe fly function generator
+                Func<IWebDriver,IWebElement>checkForvisibilityOfWebElement = new Func<IWebDriver, IWebElement>((IWebDriver Driver) =>
+                {
+                    IWebElement textBoxDelegate = Driver.FindElement(By.Name(SEARCH_TEXT_BOX_NAME));
+                    if (textBoxDelegate.Displayed)
+                        return textBoxDelegate;
+                    else
+                        return null;
+                }); 
+
+
+                textbox = waits.Until(checkForvisibilityOfWebElement);
                 return textbox;
             }
         }

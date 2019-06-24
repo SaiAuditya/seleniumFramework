@@ -87,15 +87,25 @@
     <Compile Include="IDrivers\Configuration.cs" />
     <Compile Include="IDrivers\IDrivers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="SampleTests\Pages\GoogleHomePage.cs" />
     <Compile Include="SampleTests\Pages\GoogleSearchResultsPage.cs" />
     <Compile Include="SampleTests\Tests\GoogleSearchTests.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="WebTesting\ChromeDriver.cs" />
     <Compile Include="WebTesting\InternetExplorerDriver.cs" />
     <Compile Include="WebTesting\FireFoxDriver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MobileTesting\" />
